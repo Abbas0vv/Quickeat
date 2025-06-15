@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using quickeat.Core.Models;
 using quickeat.DAL.Context;
 using quickeat.DAL.Repositories.Abstract;
 
@@ -17,12 +19,15 @@ public class RestaurantRepository : IRestaurantRepository
         _context = context;
     }
 
-    public Task CreateAsync(Restaurant restaurant)
+    public async Task CreateAsync(Restaurant restaurant)
     {
+        await _context.Restaurants.AddAsync(restaurant);
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
+        var restaurant = await GetByIdAsync(id);
+        _context.Restaurants.Remove(restaurant);
     }
 
     public async Task<List<Restaurant>> GetAllAsync()
@@ -37,9 +42,19 @@ public class RestaurantRepository : IRestaurantRepository
 
     public Task<List<Restaurant>> GetByOwnerAsync(string ownerId)
     {
+        return _context.Restaurants
+            .Where(r => r.OwnerId == ownerId)
+            .OrderBy(r => r.Name)
+            .ToListAsync();
     }
 
-    public Task UpdateAsync(Restaurant restaurant)
+    public async Task UpdateAsync(Restaurant restaurant)
     {
+        _context.Restaurants.Update(restaurant);
+    }
+
+    public async Task SaveChanges()
+    {
+        await _context.SaveChangesAsync();
     }
 }

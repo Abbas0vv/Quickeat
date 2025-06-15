@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using quickeat.Core.Models;
 
 namespace quickeat.DAL.Repositories.Abstract;
 
@@ -14,4 +15,5 @@ public interface IRestaurantRepository
     Task UpdateAsync(Restaurant restaurant);
     Task DeleteAsync(int id);
     Task<List<Restaurant>> GetByOwnerAsync(string ownerId);
+    Task SaveChanges();
 }
