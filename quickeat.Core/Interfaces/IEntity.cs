@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace quickeat.DAL.Repositories.Concrete;
+namespace quickeat.Core.Interfaces;
 
-public class PartnerApplicationRepository
+public interface IEntity
 {
+    public string Id { get; set; }
 }

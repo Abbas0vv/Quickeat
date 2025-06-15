@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace quickeat.DAL.Repositories.Concrete
+namespace quickeat.DAL.Repositories.Concrete;
+
+public class BlogRepository
 {
-    class BlogRepository
-    {
-    }
 }
