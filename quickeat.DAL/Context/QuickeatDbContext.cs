@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace quickeat.DAL.Context;
+
+public class QuickeatDbContext : IdentityDbContext
+{
+    public QuickeatDbContext(DbContextOptions<QuickeatDbContext> options) : base(options) { }
+}
