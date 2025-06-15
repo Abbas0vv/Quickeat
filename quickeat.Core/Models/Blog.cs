@@ -14,7 +14,6 @@ public class Blog : IEntity
     public string Content { get; set; }
     public DateTime PublishedDate { get; set; } = DateTime.UtcNow;
     public string AuthorId { get; set; }
+    public QuickeatUser Author { get; set; }
     public string ImageUrl { get; set; }
-
-    public ApplicationUser Author { get; set; }
 }

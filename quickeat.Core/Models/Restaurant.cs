@@ -17,6 +17,7 @@ public class Restaurant : IEntity
     public string LogoUrl { get; set; }
     public bool IsActive { get; set; } = true;
     public string OwnerId { get; set; } // Links to Identity User
+    public QuickeatUser Owner { get; set; }
 
     public List<MenuCategory> MenuCategories { get; set; }
     public List<Order> Orders { get; set; }

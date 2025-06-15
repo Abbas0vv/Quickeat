@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using quickeat.Core.Models;
+using quickeat.DAL.Context;
 
 namespace Quickeat
 {
@@ -9,11 +12,12 @@ namespace Quickeat
             var builder = WebApplication.CreateBuilder(args);
 
             var connectionString = builder.Configuration.GetConnectionString("Default");
-            builder.Services.AddDbContext<JobwayDbContext>(options =>
+            builder.Services.AddDbContext<QuickeatDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<JobwayDbContext>();
+            builder.Services.AddIdentity<QuickeatUser, IdentityRole>()
+                .AddEntityFrameworkStores<QuickeatDbContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.AddControllersWithViews()
                             .AddRazorRuntimeCompilation();
