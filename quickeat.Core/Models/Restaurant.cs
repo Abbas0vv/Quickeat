@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using quickeat.Core.Enums;
 using quickeat.Core.Interfaces;
 
 namespace quickeat.Core.Models;
@@ -9,6 +10,7 @@ namespace quickeat.Core.Models;
 public class Restaurant : IEntity
 {
     public string Id { get; set; }
+    public RestaurantType Type { get; set; }
 
     [Required(ErrorMessage = "Restaurant name is required")]
     [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters")]
