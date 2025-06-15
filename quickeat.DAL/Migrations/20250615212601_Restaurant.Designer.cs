@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using quickeat.DAL.Context;
 
@@ -11,9 +12,11 @@ using quickeat.DAL.Context;
 namespace quickeat.DAL.Migrations
 {
     [DbContext(typeof(QuickeatDbContext))]
-    partial class QuickeatDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250615212601_Restaurant")]
+    partial class Restaurant
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
